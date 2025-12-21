@@ -27,8 +27,9 @@ sd.wait()
 
 audio = audio.flatten()
 
-# Normalize audio
-audio = audio / np.max(np.abs(audio))
+# Normalize audio safely
+if np.max(np.abs(audio)) != 0:
+    audio = audio / np.max(np.abs(audio))
 
 write(AUDIO_FILE, SAMPLE_RATE, audio)
 print("✅ Audio recorded and saved")
@@ -91,10 +92,30 @@ else:
     reason = "Audio emotion used (text confidence low)"
 
 # =========================
+# STEP 6: EMOTION → SENTIMENT
+# =========================
+def emotion_to_sentiment(emotion):
+    positive = ["joy", "happy"]
+    negative = ["anger", "sadness", "fear", "disgust"]
+    neutral = ["neutral"]
+
+    emotion = emotion.lower()
+
+    if emotion in positive:
+        return "POSITIVE"
+    elif emotion in negative:
+        return "NEGATIVE"
+    else:
+        return "NEUTRAL"
+
+sentiment = emotion_to_sentiment(final_emotion)
+
+# =========================
 # FINAL OUTPUT
 # =========================
 print("\n🎧 Audio Emotion :", audio_emotion, f"({audio_score:.2f})")
 print("📝 Text Emotion  :", text_emotion, f"({text_score:.2f})")
 
 print("\n🔥 FINAL EMOTION :", final_emotion.upper())
+print("📌 SENTIMENT    :", sentiment)
 print("🧠 Reason       :", reason)
