@@ -12,7 +12,7 @@ DURATION = 10
 AUDIO_FILE = "input.wav"
 TEXT_CONF_THRESHOLD = 0.6
 
-print("🎤 Recording started... Speak clearly")
+print("🎤 Recording started... Speak in Tamil or English")
 
 # =========================
 # STEP 1: RECORD AUDIO
@@ -27,22 +27,26 @@ sd.wait()
 
 audio = audio.flatten()
 
-# Normalize audio safely
 if np.max(np.abs(audio)) != 0:
     audio = audio / np.max(np.abs(audio))
 
 write(AUDIO_FILE, SAMPLE_RATE, audio)
-print("✅ Audio recorded and saved")
+print("✅ Audio recorded")
 
 # =========================
-# STEP 2: SPEECH → TEXT (WHISPER)
+# STEP 2: SPEECH → TEXT (WHISPER + TRANSLATE)
 # =========================
-print("\n📝 Transcribing speech...")
+print("\n📝 Transcribing & translating speech...")
 whisper_model = whisper.load_model("small")
-transcription = whisper_model.transcribe(AUDIO_FILE)
-text = transcription["text"].strip()
 
-print("📝 Transcribed Text:", text)
+# IMPORTANT CHANGE 👇
+transcription = whisper_model.transcribe(
+    AUDIO_FILE,
+    task="translate"   # ← Tamil → English automatically
+)
+
+text = transcription["text"].strip()
+print("📝 Translated Text:", text)
 
 # =========================
 # STEP 3: TEXT → EMOTION
@@ -97,7 +101,7 @@ else:
 def emotion_to_sentiment(emotion):
     positive = ["joy", "happy"]
     negative = ["anger", "sadness", "fear", "disgust"]
-    neutral = ["neutral"]
+    neutral = ["neutral", "surprise"]
 
     emotion = emotion.lower()
 
@@ -119,3 +123,4 @@ print("📝 Text Emotion  :", text_emotion, f"({text_score:.2f})")
 print("\n🔥 FINAL EMOTION :", final_emotion.upper())
 print("📌 SENTIMENT    :", sentiment)
 print("🧠 Reason       :", reason)
+print("\n✅ Process completed.")
