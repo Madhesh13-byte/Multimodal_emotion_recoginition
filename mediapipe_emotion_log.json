@@ -1,0 +1,730 @@
+[
+  {
+    "timestamp": 1767728196.4257498,
+    "valence": -0.2647444009780884,
+    "arousal": -0.006575576961040497,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728197.507845,
+    "valence": -0.25990794003009793,
+    "arousal": -0.009362782165408133,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728198.32944,
+    "valence": -0.25342125624418255,
+    "arousal": 0.004362392835319043,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728198.829567,
+    "valence": -0.2495899324715137,
+    "arousal": 0.008252807471901179,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728199.3598464,
+    "valence": -0.24370061134994025,
+    "arousal": 0.017326048746332527,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728199.8874972,
+    "valence": -0.263004205057919,
+    "arousal": -0.008088205541931093,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728200.4152613,
+    "valence": -0.29250694215390083,
+    "arousal": 0.0033002227544449278,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728200.916655,
+    "valence": -0.3226818445331364,
+    "arousal": -0.037626492381119356,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728201.4228227,
+    "valence": -0.29673109671518766,
+    "arousal": -0.030303630784170366,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728201.952673,
+    "valence": -0.320194226053674,
+    "arousal": -0.06321559050531345,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728202.464434,
+    "valence": -0.33010951785556797,
+    "arousal": -0.04333412537173241,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728202.971179,
+    "valence": -0.35519263024944686,
+    "arousal": 0.013360879595706195,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728203.486262,
+    "valence": -0.3051496467299564,
+    "arousal": -0.037105045971333454,
+    "emotion": "Relaxed",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728204.0315192,
+    "valence": -0.3213090881620956,
+    "arousal": -0.017048192227822175,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728204.5601966,
+    "valence": -0.32995288267141365,
+    "arousal": -0.03679453983253155,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728205.1023765,
+    "valence": -0.31176583753112996,
+    "arousal": -0.052668426017385125,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728205.6342342,
+    "valence": -0.310309267543344,
+    "arousal": -0.08370297353098291,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728206.1581597,
+    "valence": -0.2723072454848009,
+    "arousal": -0.08258568386674571,
+    "emotion": "Relaxed",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728206.6651812,
+    "valence": -0.25467031795409145,
+    "arousal": -0.10642790494668933,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728207.167261,
+    "valence": -0.2712367953761297,
+    "arousal": -0.13265593587175922,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728207.699333,
+    "valence": -0.2796025819910282,
+    "arousal": -0.1346222044743214,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728208.2397516,
+    "valence": -0.2882971697184344,
+    "arousal": -0.13315432888289092,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728208.7676582,
+    "valence": -0.28603510391642945,
+    "arousal": -0.1486825722993797,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728209.3105495,
+    "valence": -0.281017437898628,
+    "arousal": -0.15316023627708059,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728209.812838,
+    "valence": -0.26046938769664213,
+    "arousal": -0.13647106925500224,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728210.3176453,
+    "valence": -0.28421014399182887,
+    "arousal": -0.14543020425137831,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728210.8479693,
+    "valence": -0.2803167928814536,
+    "arousal": -0.10213672643927602,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728211.374053,
+    "valence": -0.28378376470920963,
+    "arousal": -0.12399150548596687,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728211.9067369,
+    "valence": -0.28661058917484944,
+    "arousal": -0.11446057491256449,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728212.446754,
+    "valence": -0.26406680546591266,
+    "arousal": -0.12200739396539884,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728212.9748495,
+    "valence": -0.266408332205541,
+    "arousal": -0.1387047592704424,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728213.5177732,
+    "valence": -0.2616805698590566,
+    "arousal": -0.14304973301623763,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728214.0492537,
+    "valence": -0.17597707274376972,
+    "arousal": -0.11047685339683444,
+    "emotion": "Relaxed",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728214.575309,
+    "valence": -0.0882653222876165,
+    "arousal": -0.09250491583092912,
+    "emotion": "Relaxed",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728215.1213253,
+    "valence": -0.016216550119535274,
+    "arousal": -0.06909321615219845,
+    "emotion": "Relaxed",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728215.6482053,
+    "valence": -0.013731189512681267,
+    "arousal": -0.05873170863473925,
+    "emotion": "Relaxed",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728216.1534007,
+    "valence": 0.006148512353072651,
+    "arousal": -0.04676708725213169,
+    "emotion": "Relaxed",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728216.6562595,
+    "valence": 0.03637554758061872,
+    "arousal": -0.05349832726501834,
+    "emotion": "Relaxed",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728217.1821747,
+    "valence": -0.03754697184474334,
+    "arousal": -0.051280944094939905,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728217.6920478,
+    "valence": -0.07917902825770523,
+    "arousal": 0.01793500137118626,
+    "emotion": "Neutral",
+    "confidence": 0.95
+  },
+  {
+    "timestamp": 1767728218.1956258,
+    "valence": -0.10666272710709196,
+    "arousal": 0.0542254790291358,
+    "emotion": "Neutral",
+    "confidence": 0.95
+  },
+  {
+    "timestamp": 1767728218.718608,
+    "valence": -0.1311669306920359,
+    "arousal": 0.06296882194654327,
+    "emotion": "Neutral",
+    "confidence": 0.95
+  },
+  {
+    "timestamp": 1767728219.2322967,
+    "valence": -0.1405559599276853,
+    "arousal": 0.06519084834718035,
+    "emotion": "Neutral",
+    "confidence": 0.95
+  },
+  {
+    "timestamp": 1767728219.760052,
+    "valence": -0.17444594441985395,
+    "arousal": 0.01706696365837582,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728220.3357608,
+    "valence": -0.20267899649734014,
+    "arousal": -0.015285173354595607,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728220.866845,
+    "valence": -0.24107149613078732,
+    "arousal": -0.054706946520641245,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728221.389823,
+    "valence": -0.25778604706648395,
+    "arousal": -0.08678548669422105,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728221.901409,
+    "valence": -0.24883669229712468,
+    "arousal": -0.10716739887916152,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728222.40265,
+    "valence": -0.25794533221579063,
+    "arousal": -0.11686218794630142,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728222.9278493,
+    "valence": -0.2697928183283361,
+    "arousal": -0.12343119642647425,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728223.431077,
+    "valence": -0.27745690177919136,
+    "arousal": -0.13345420751033846,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728223.9380708,
+    "valence": -0.27275036932755675,
+    "arousal": -0.14418936794142956,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728224.463751,
+    "valence": -0.2691040159584126,
+    "arousal": -0.16091359523533505,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728224.9747674,
+    "valence": -0.26484979638702955,
+    "arousal": -0.16327014572738713,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728225.4857867,
+    "valence": -0.21284348705880937,
+    "arousal": 0.1769987791267696,
+    "emotion": "Surprise",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728225.9994712,
+    "valence": -0.1593493892017123,
+    "arousal": 0.32544083144678315,
+    "emotion": "Surprise",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728226.5466614,
+    "valence": -0.11178259837470271,
+    "arousal": 0.4123918942857737,
+    "emotion": "Surprise",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728227.0719347,
+    "valence": -0.08308492801079424,
+    "arousal": 0.4213184488390156,
+    "emotion": "Neutral",
+    "confidence": 0.95
+  },
+  {
+    "timestamp": 1767728227.6138716,
+    "valence": -0.11995327165765057,
+    "arousal": 0.45665477124869697,
+    "emotion": "Anger",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728228.1424913,
+    "valence": -0.14731243037909014,
+    "arousal": 0.35134616728240164,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728228.6707208,
+    "valence": -0.17318096904566704,
+    "arousal": 0.2331959133588248,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728229.181336,
+    "valence": -0.2507706324659543,
+    "arousal": 0.27412244952421205,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728229.6927407,
+    "valence": -0.29605909568885264,
+    "arousal": 0.31992356373559006,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728230.2099562,
+    "valence": -0.37473736274216085,
+    "arousal": 0.3049563325999518,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728230.7145908,
+    "valence": -0.41025355306845357,
+    "arousal": 0.4067500224005021,
+    "emotion": "Anger",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728231.2173898,
+    "valence": -0.43855192257272213,
+    "arousal": 0.4183656149311449,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728231.7435594,
+    "valence": -0.45416795209363003,
+    "arousal": 0.44227010918085874,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728232.2927303,
+    "valence": -0.461563806699916,
+    "arousal": 0.43720768728551834,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728232.8157988,
+    "valence": -0.4834057735175321,
+    "arousal": 0.49727508214203814,
+    "emotion": "Anger",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728233.362667,
+    "valence": -0.5009878846744001,
+    "arousal": 0.5418055012917699,
+    "emotion": "Anger",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728233.891238,
+    "valence": -0.5208700816748053,
+    "arousal": 0.577662560201419,
+    "emotion": "Anger",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728234.4155917,
+    "valence": -0.5172117655120548,
+    "arousal": 0.5240308066206305,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728234.957806,
+    "valence": -0.5057207259783725,
+    "arousal": 0.5588475062447776,
+    "emotion": "Anger",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728235.4906895,
+    "valence": -0.480140751528214,
+    "arousal": 0.6083739534813755,
+    "emotion": "Anger",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728236.031672,
+    "valence": -0.4780331772061481,
+    "arousal": 0.5844912206191832,
+    "emotion": "Anger",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728236.5595484,
+    "valence": -0.4801372115855024,
+    "arousal": 0.5302883548082222,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728237.0877259,
+    "valence": -0.44111500059875086,
+    "arousal": 0.45567432878205344,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728237.6294937,
+    "valence": -0.3869057567190981,
+    "arousal": 0.35490933494222576,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728238.1632357,
+    "valence": -0.36405724385284377,
+    "arousal": 0.22826568787809898,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728238.7024097,
+    "valence": -0.3325859642945934,
+    "arousal": 0.17022647004685482,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728239.231804,
+    "valence": -0.3281905468152211,
+    "arousal": 0.09981705724153096,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728239.7629,
+    "valence": -0.2940505644770833,
+    "arousal": 0.09234000926481904,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728240.2658517,
+    "valence": -0.2706163576011519,
+    "arousal": 0.08151765631821806,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728240.7694082,
+    "valence": -0.2697569673791788,
+    "arousal": 0.051031556621501224,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728241.298667,
+    "valence": -0.30926453092442785,
+    "arousal": 0.015530058072722518,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728241.8385823,
+    "valence": -0.295888321728734,
+    "arousal": -0.0006758300426586532,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728242.3718538,
+    "valence": -0.2686064064421847,
+    "arousal": 0.027078981243164452,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728242.9128754,
+    "valence": -0.2647884929123537,
+    "arousal": 0.04866223586580533,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728243.4399176,
+    "valence": -0.26007016110023967,
+    "arousal": 0.06502034303632342,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728243.9664967,
+    "valence": -0.26886840984543936,
+    "arousal": -0.0009574539863976411,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728244.475118,
+    "valence": -0.27217073865457914,
+    "arousal": -0.011520836197608589,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728244.977112,
+    "valence": -0.2820524299085853,
+    "arousal": -0.050080696652622735,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728245.50871,
+    "valence": -0.30162005590980273,
+    "arousal": -0.08954117838263928,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728246.0499713,
+    "valence": -0.2939141529531232,
+    "arousal": -0.1126477082630425,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728246.5743713,
+    "valence": -0.30082737271106896,
+    "arousal": -0.1168847905638119,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728247.121709,
+    "valence": -0.29329536661388134,
+    "arousal": -0.09346600449876093,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728247.645963,
+    "valence": -0.28487663282371717,
+    "arousal": -0.046287072735600385,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728248.176334,
+    "valence": -0.2545342899301848,
+    "arousal": -0.012046922868789136,
+    "emotion": "Neutral",
+    "confidence": 0.95
+  },
+  {
+    "timestamp": 1767728248.9920175,
+    "valence": -0.25860097009514177,
+    "arousal": -0.010831858454555898,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728249.5195808,
+    "valence": -0.26351464588445506,
+    "arousal": -0.019961092265335163,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728250.0474453,
+    "valence": -0.26070996482473074,
+    "arousal": 0.004513557504295102,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728250.5558825,
+    "valence": -0.2573856458218,
+    "arousal": 0.003830162088548296,
+    "emotion": "Disgust",
+    "confidence": 0.85
+  },
+  {
+    "timestamp": 1767728251.0593987,
+    "valence": -0.2635602684424093,
+    "arousal": -0.018114495594965807,
+    "emotion": "Sad",
+    "confidence": 0.9
+  },
+  {
+    "timestamp": 1767728251.5864491,
+    "valence": -0.2719474635644793,
+    "arousal": -0.06643276892479974,
+    "emotion": "Sad",
+    "confidence": 0.9
+  }
+]

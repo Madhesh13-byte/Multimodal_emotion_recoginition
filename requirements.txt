@@ -1,0 +1,6 @@
+hsemotion
+opencv-python
+numpy
+onnxruntime
+timm
+mediapipe
