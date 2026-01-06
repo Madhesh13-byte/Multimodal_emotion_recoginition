@@ -2,10 +2,28 @@
 
 Real-time emotion recognition using MediaPipe face detection and HSEmotion VA analysis.
 
-## Quick Start
+## Installation
 
+1.  **Prerequisites**: Python 3.8 or higher.
+
+2.  **Install Dependencies**:
+    ```bash
+    pip install hsemotion timm opencv-python mediapipe numpy onnxruntime
+    ```
+    *Note: If you have issues with `timm`, this system patches compatibility automatically.*
+
+3.  **Download Models**:
+    The system requires the `blaze_face_short_range.tflite` model for face detection.
+    
+    Powershell command to download:
+    ```powershell
+    Invoke-WebRequest -Uri "https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite" -OutFile "blaze_face_short_range.tflite"
+    ```
+
+## Usage
+
+Run the main system:
 ```bash
-pip install -r requirements.txt
 python mediapipe_system.py
 ```
 
