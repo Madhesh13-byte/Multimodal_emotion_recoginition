@@ -44,12 +44,8 @@ class MediaPipeHSEmotionSystem:
         self.model = HSEmotionRecognizer(model_name='enet_b0_8_va_mtl')
         
         # Patch for 'conv_s2d' and 'aa' AttributeError due to timm version mismatch
-        # The loaded model object lacks this attribute which new timm classes expect
-        # We apply this to ALL modules safely
         if hasattr(self.model, 'model'):
-            # Convert generator to list to avoid runtime modification issues during iteration
             for name, m in list(self.model.model.named_modules()):
-                # Check for missing attributes in any module that might need them
                 if not hasattr(m, 'conv_s2d'):
                     m.conv_s2d = None
                 if not hasattr(m, 'aa'):
@@ -58,10 +54,12 @@ class MediaPipeHSEmotionSystem:
         torch.load = original_load
         
         # System variables
-        self.va_history = deque(maxlen=5)
+        self.emotion_history = {}  # Track emotion history per face
+        self.last_emotion = {}  # Track last logged emotion per face
+        self.emotion_buffer = {}  # Buffer for consistent emotion detection
         self.log_data = []
         self.last_analysis_time = 0
-        self.analysis_interval = 0.5
+        self.analysis_interval = 0.3  # Faster analysis for better tracking
         
         print("[OK] MediaPipe HSEmotion system initialized")
     
@@ -95,65 +93,79 @@ class MediaPipeHSEmotionSystem:
         
         return faces
     
-    def classify_emotion_from_va(self, valence, arousal):
-        """Classify emotion based on VA values"""
-        if valence > 0.2:
-            if arousal > 0.5:
-                return "Happy", 0.95
-            elif arousal > 0.0:
-                return "Pleasant", 0.90
-            else:
-                return "Calm", 0.85
-        elif valence > -0.2:
-            if arousal > 0.6:
-                return "Surprise", 0.90
-            elif arousal > 0.0:
-                return "Neutral", 0.95
-            else:
-                return "Relaxed", 0.85
-        else:
-            if arousal > 0.5:
-                return "Anger", 0.90
-            elif arousal > 0.0:
-                return "Disgust", 0.85
-            else:
-                return "Sad", 0.90
+    def should_log_emotion(self, face_id, emotion, confidence):
+        """Check if emotion change is significant enough to log with consistency check"""
+        # Skip neutral emotions (noise reduction)
+        if emotion == "Neutral":
+            return False
+        
+        # Initialize buffer for new face
+        if face_id not in self.emotion_buffer:
+            self.emotion_buffer[face_id] = deque(maxlen=5)
+        
+        # Add current emotion to buffer
+        self.emotion_buffer[face_id].append(emotion)
+        
+        # Check if we have 5 consistent emotions
+        if len(self.emotion_buffer[face_id]) >= 5:
+            # Check if all 5 recent emotions are the same
+            recent_emotions = list(self.emotion_buffer[face_id])
+            if all(e == recent_emotions[0] for e in recent_emotions):
+                consistent_emotion = recent_emotions[0]
+                
+                # Log if it's different from last logged emotion
+                if face_id not in self.last_emotion or self.last_emotion[face_id] != consistent_emotion:
+                    if confidence > 0.3:  # Confidence threshold
+                        self.last_emotion[face_id] = consistent_emotion
+                        return True
+        
+        return False
     
-    def predict_va_and_emotion(self, face_img):
-        """Predict VA and emotion from face image"""
+    def smooth_emotion(self, face_id, emotion, confidence):
+        """Apply temporal smoothing to emotion predictions"""
+        if face_id not in self.emotion_history:
+            self.emotion_history[face_id] = deque(maxlen=3)
+        
+        self.emotion_history[face_id].append((emotion, confidence))
+        
+        # Use majority voting for stability
+        if len(self.emotion_history[face_id]) >= 2:
+            emotions = [e[0] for e in self.emotion_history[face_id]]
+            confidences = [e[1] for e in self.emotion_history[face_id]]
+            
+            # Return most frequent emotion with average confidence
+            from collections import Counter
+            most_common = Counter(emotions).most_common(1)[0][0]
+            avg_confidence = np.mean([c for e, c in self.emotion_history[face_id] if e == most_common])
+            return most_common, avg_confidence
+        
+        return emotion, confidence
+    
+    def predict_direct_emotion(self, face_img):
+        """Predict emotion using HSEmotion model"""
         try:
+            # Use the working method from before
             _, va_scores = self.model.predict_emotions(face_img, logits=True)
             
             if isinstance(va_scores, np.ndarray) and va_scores.shape[0] >= 10:
-                valence = float(va_scores[8])
-                arousal = float(va_scores[9])
+                # Get 8-emotion scores (indices 0-7)
+                emotion_scores = va_scores[:8]
+                emotions = ['Anger', 'Contempt', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Sad', 'Surprise']
+                emotion_idx = np.argmax(emotion_scores)
+                emotion = emotions[emotion_idx]
+                confidence = float(emotion_scores[emotion_idx])
                 
-                emotion, confidence = self.classify_emotion_from_va(valence, arousal)
-                return valence, arousal, emotion, confidence
+                return emotion, confidence
         except Exception as e:
             print(f"Prediction error: {e}")
         
-        return 0.0, 0.0, "Unknown", 0.0
-    
-    def stabilize_va(self, valence, arousal):
-        """Temporal stabilization"""
-        if self.va_history:
-            last_v, last_a = self.va_history[-1]
-            alpha = 0.3
-            valence = alpha * valence + (1 - alpha) * last_v
-            arousal = alpha * arousal + (1 - alpha) * last_a
-        
-        self.va_history.append((valence, arousal))
-        return valence, arousal
+        return "Unknown", 0.0
     
     def run_analysis(self, source=0):
         """Run MediaPipe-based emotion analysis"""
         cap = cv2.VideoCapture(source)
         cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
         cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
-        
-        current_valence, current_arousal = 0.0, 0.0
-        current_emotion, current_confidence = "Neutral", 0.0
         
         print("Starting MediaPipe emotion analysis. Press 'q' to quit.")
         
@@ -163,46 +175,53 @@ class MediaPipeHSEmotionSystem:
                 break
             
             current_time = time.time()
-            
-            # MediaPipe face detection
             faces = self.detect_faces_mediapipe(frame)
-            
-            # Check if should analyze
             should_analyze = (current_time - self.last_analysis_time) >= self.analysis_interval
             
-            for (x, y, w, h) in faces:
+            for i, (x, y, w, h) in enumerate(faces):
+                face_emotion, face_confidence = "Neutral", 0.0
+                
                 if should_analyze:
-                    # Extract and process face
                     face_crop = frame[y:y+h, x:x+w]
                     if face_crop.size > 0:
                         face_crop_rgb = cv2.cvtColor(face_crop, cv2.COLOR_BGR2RGB)
                         face_resized = cv2.resize(face_crop_rgb, (224, 224))
                         
-                        # Predict emotion
-                        current_valence, current_arousal, current_emotion, current_confidence = self.predict_va_and_emotion(face_resized)
-                        current_valence, current_arousal = self.stabilize_va(current_valence, current_arousal)
+                        # Predict emotion for this specific face
+                        raw_emotion, raw_confidence = self.predict_direct_emotion(face_resized)
                         
-                        print(f"Analysis {len(self.log_data)+1}: V={current_valence:.3f}, A={current_arousal:.3f}, Emotion={current_emotion} ({current_confidence:.2f})")                        
-                        # Log data
-                        self.log_data.append({
-                            'timestamp': current_time,
-                            'valence': current_valence,
-                            'arousal': current_arousal,
-                            'emotion': current_emotion,
-                            'confidence': current_confidence
-                        })
+                        # Apply temporal smoothing
+                        face_emotion, face_confidence = self.smooth_emotion(i, raw_emotion, raw_confidence)
                         
-                        self.last_analysis_time = current_time
+                        # Always show current emotion in terminal
+                        print(f"Face {i+1}: Emotion={face_emotion} ({face_confidence:.2f})")
+                        
+                        # Only log significant emotion changes (not neutral noise)
+                        if self.should_log_emotion(i, face_emotion, face_confidence):
+                            print(f"Face {i+1}: Emotion={face_emotion} ({face_confidence:.2f}) [LOGGED]")
+                            
+                            # Log data for this face
+                            self.log_data.append({
+                                'timestamp': current_time,
+                                'face_id': i+1,
+                                'emotion': face_emotion,
+                                'confidence': face_confidence
+                            })
+                else:
+                    # Use last known emotion for display
+                    if i in self.emotion_history and len(self.emotion_history[i]) > 0:
+                        face_emotion, face_confidence = self.emotion_history[i][-1]
                 
-                # Draw bounding box and info
+                # Draw individual face info
                 cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
-                cv2.putText(frame, f"V:{current_valence:.2f} A:{current_arousal:.2f}", 
-                           (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
-                cv2.putText(frame, f"{current_emotion} ({current_confidence:.2f})", 
-                           (x, y-35), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 0), 1)
+                cv2.putText(frame, f"{face_emotion} ({face_confidence:.2f})", 
+                           (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 0), 1)
+            
+            if should_analyze and faces:
+                self.last_analysis_time = current_time
             
             # Show analysis count
-            cv2.putText(frame, f"MediaPipe Analyses: {len(self.log_data)}", (10, 30), 
+            cv2.putText(frame, f"MediaPipe Analysis: {len(faces)} faces", (10, 30), 
                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 255), 2)
             
             cv2.imshow('MediaPipe HSEmotion Analysis', frame)
@@ -217,7 +236,7 @@ class MediaPipeHSEmotionSystem:
         with open('mediapipe_emotion_log.json', 'w') as f:
             json.dump(self.log_data, f, indent=2)
         
-        print(f"MediaPipe analysis complete. {len(self.log_data)} analyses performed.")
+        print(f"MediaPipe analysis complete. {len(self.log_data)} emotion changes logged.")
 
 if __name__ == "__main__":
     system = MediaPipeHSEmotionSystem()
