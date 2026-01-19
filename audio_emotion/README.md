@@ -10,7 +10,7 @@ The system analyzes human speech and predicts emotional states such as **Happy, 
 - Hugging Face Transformers
 - wav2vec2 (SUPERB Emotion Model)
 - PyTorch
-- ffmpeg
+- ffmpeg  
 
 ---
 
